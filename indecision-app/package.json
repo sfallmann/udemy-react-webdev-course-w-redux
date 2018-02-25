@@ -1,0 +1,15 @@
+{
+  "name": "indecision-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Sean Fallmann",
+  "license": "MIT",
+  "scripts": {
+    "buildjs": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch" 
+  },
+  "dependencies": {
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "global": "^4.3.2"
+  }
+}
