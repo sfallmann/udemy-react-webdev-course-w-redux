@@ -4,18 +4,20 @@ console.log('app.js has been loaded');
 
 const app = {
   title: 'Indecision App',
-  subtitle: 'It will make the decision for you!'
+  subtitle: 'Let your computer make the decision for you!',
+  options: ['choice one', 'choice two']
 }
 
 
 const template = (
   <div>
     <h1>{app.title}</h1>
-    <p>{app.subtitle}</p>
-    <ol>
-      <li>Item one</li>
-      <li>Item two</li>
-    </ol>
+    { app.subtitle && <p>{app.subtitle}</p> }
+    <p>{ app.options.length ? 'Here are your options' : 'No options' }</p>
+        <ol>
+          <li>Item one</li>
+          <li>Item two</li>
+        </ol>
   </div>
 );
 
@@ -27,9 +29,9 @@ const user = {
 
 const templateTwo = (
   <div>
-    <h1>{user.name}</h1>
-    <p>Age: {user.age}</p>
-    <p>Location: {user.location}</p>
+    <h1>{ (user.name) ? user.name : 'Anonymous' }</h1>
+    { user.age >= 18 && <p>Age: {user.age}</p> }
+    <p>Location: { (user.location) ? user.location : 'Unknown' }</p>
   </div>
 );
 

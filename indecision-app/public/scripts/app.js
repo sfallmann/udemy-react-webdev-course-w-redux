@@ -4,7 +4,8 @@ console.log('app.js has been loaded');
 
 var app = {
   title: 'Indecision App',
-  subtitle: 'It will make the decision for you!'
+  subtitle: 'Let your computer make the decision for you!',
+  options: ['choice one', 'choice two']
 };
 
 var template = React.createElement(
@@ -15,10 +16,15 @@ var template = React.createElement(
     null,
     app.title
   ),
-  React.createElement(
+  app.subtitle && React.createElement(
     'p',
     null,
     app.subtitle
+  ),
+  React.createElement(
+    'p',
+    null,
+    app.options.length ? 'Here are your options' : 'No options'
   ),
   React.createElement(
     'ol',
@@ -48,9 +54,9 @@ var templateTwo = React.createElement(
   React.createElement(
     'h1',
     null,
-    user.name
+    user.name ? user.name : 'Anonymous'
   ),
-  React.createElement(
+  user.age >= 18 && React.createElement(
     'p',
     null,
     'Age: ',
@@ -60,7 +66,7 @@ var templateTwo = React.createElement(
     'p',
     null,
     'Location: ',
-    user.location
+    user.location ? user.location : 'Unknown'
   )
 );
 
