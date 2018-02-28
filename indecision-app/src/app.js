@@ -5,8 +5,10 @@ console.log('app.js has been loaded');
 const app = {
   title: 'Indecision App',
   subtitle: 'Let your computer make the decision for you!',
-  options: []
+  options: [],
+  choice: undefined
 }
+
 
 const onFormSubmit = (e) => {
   e.preventDefault();
@@ -22,8 +24,18 @@ const onFormSubmit = (e) => {
   render();
 }
 
-const removeAll = () => {
+const onRemoveAll = () => {
   app.options = [];
+  render();
+}
+
+const onMakeDecision = () => {
+
+  if (!app.options.length)
+    return;
+
+  const rnd = Math.floor(Math.random() * app.options.length);
+  app.choice = app.options[rnd]
   render();
 }
 
@@ -35,8 +47,9 @@ const render = () => {
       <h1>{app.title}</h1>
       { app.subtitle && <p>{app.subtitle}</p> }
       <p>{ app.options.length ? 'Here are your options' : 'No options' }</p>
-      <p>Options Count: {app.options.length}</p>
-      <button onClick={removeAll}>Remove All</button>
+      <button disabled={app.options.length === 0} onClick={onMakeDecision}>What should I do?</button>
+      <button onClick={onRemoveAll}>Remove All</button>
+      {app.choice && <p>Choice: {app.choice}</p>}
       <ol>
         {
           app.options.map((option, i) => {

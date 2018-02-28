@@ -5,7 +5,8 @@ console.log('app.js has been loaded');
 var app = {
   title: 'Indecision App',
   subtitle: 'Let your computer make the decision for you!',
-  options: []
+  options: [],
+  choice: undefined
 };
 
 var onFormSubmit = function onFormSubmit(e) {
@@ -22,8 +23,17 @@ var onFormSubmit = function onFormSubmit(e) {
   render();
 };
 
-var removeAll = function removeAll() {
+var onRemoveAll = function onRemoveAll() {
   app.options = [];
+  render();
+};
+
+var onMakeDecision = function onMakeDecision() {
+
+  if (!app.options.length) return;
+
+  var rnd = Math.floor(Math.random() * app.options.length);
+  app.choice = app.options[rnd];
   render();
 };
 
@@ -49,15 +59,20 @@ var render = function render() {
       app.options.length ? 'Here are your options' : 'No options'
     ),
     React.createElement(
-      'p',
-      null,
-      'Options Count: ',
-      app.options.length
+      'button',
+      { disabled: app.options.length === 0, onClick: onMakeDecision },
+      'What should I do?'
     ),
     React.createElement(
       'button',
-      { onClick: removeAll },
+      { onClick: onRemoveAll },
       'Remove All'
+    ),
+    app.choice && React.createElement(
+      'p',
+      null,
+      'Choice: ',
+      app.choice
     ),
     React.createElement(
       'ol',
