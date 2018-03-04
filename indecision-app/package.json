@@ -5,7 +5,8 @@
   "author": "Sean Fallmann",
   "license": "MIT",
   "scripts": {
-    "buildjs": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch"
+    "buildjs": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch",
+    "build-pg-js": "babel src/playground/build-it-visible.js --out-file=public/scripts/app.js --presets=env,react --watch"
   },
   "dependencies": {
     "babel-preset-env": "^1.6.1",
