@@ -8,7 +8,8 @@
     "server": "live-server public",
     "build-babel": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch",
     "build-babel-pg": "babel src/playground/es6-classes-1.js --out-file=public/scripts/app.js --presets=env,react --watch",
-    "build": "webpack --watch"
+    "build": "webpack",
+    "dev-server": "webpack-dev-server"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
@@ -21,6 +22,7 @@
     "react": "16.0.0",
     "react-dom": "16.0.0",
     "validator": "^9.4.1",
-    "webpack": "3.1.0"
+    "webpack": "3.1.0",
+    "webpack-dev-server": "2.5.1"
   }
 }
