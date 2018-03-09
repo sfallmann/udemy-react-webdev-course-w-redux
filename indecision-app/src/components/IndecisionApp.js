@@ -6,17 +6,11 @@ import Action from './Action';
 import Header from './Header';
 
 export default class IndecisionApp extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
-    this.handlePick = this.handlePick.bind(this);
-    this.handleAddOption = this.handleAddOption.bind(this);
-    this.handleDeleteOption = this.handleDeleteOption.bind(this);
-    this.state = {
-      options: props.options
-    }
-  }
 
+  state = {
+    options: []
+  }
+ 
   componentDidMount() {
     const state = localStorage.getItem('state');
     if (!state) return;
@@ -39,7 +33,7 @@ export default class IndecisionApp extends React.Component {
 
   }
 
-  handleAddOption(option) {
+  handleAddOption = (option) => {
 
     if(!option) {
       return 'Enter valid value to add item';
@@ -49,19 +43,20 @@ export default class IndecisionApp extends React.Component {
 
     this.setState((prevState) => ({options: prevState.options.concat(option)}))
   }
-  handleDeleteOptions() {
+  handleDeleteOptions = () => {
     this.setState(() => ({options: []}))
   }
 
-  handleDeleteOption(option) {
+  handleDeleteOption = (option) => {
     this.setState((prevState) => ({options: prevState.options.filter((opt) => opt !== option )}))
   }
 
-  handlePick() {
+  handlePick = () => {
     const randomNum = Math.floor(Math.random() * this.state.options.length)
     const option = this.state.options[randomNum];
     alert(option);
   }
+
   render() {
 
     const subtitle = "Your life in your computer's hands!";
