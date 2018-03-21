@@ -1,6 +1,7 @@
 'use strict';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { addExpense, editExpense, removeExpense } from './actions/expenses';
@@ -15,8 +16,20 @@ const store = configureStore();
 store.dispatch(addExpense({description: 'Gas Bill', amount: 6700}));
 store.dispatch(addExpense({description: 'Water Bill', amount: 12000}))
 store.dispatch(setTextFilter('bill'));
-store.dispatch(sortByAmount())
+
 const state = store.getState();
+
 console.log(getVisibleExpenses(state.expenses, state.filters))
 
-ReactDOM.render(<AppRouter/>, document.getElementById('app'));
+setTimeout(() => {
+  store.dispatch(addExpense({description: 'Electric Bill', amount: 12000}))
+  store.dispatch(removeExpense(state.expenses[0]))
+}, 3000)
+
+const jsx = (
+  <Provider store={store}>
+    <AppRouter/>
+  </Provider>
+)
+
+ReactDOM.render(jsx, document.getElementById('app'));
