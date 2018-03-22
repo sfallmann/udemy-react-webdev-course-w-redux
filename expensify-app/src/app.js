@@ -17,13 +17,7 @@ store.dispatch(addExpense({description: 'Gas Bill', amount: 6700}));
 store.dispatch(addExpense({description: 'Water Bill', amount: 12000}))
 store.dispatch(setTextFilter('bill'));
 
-const state = store.getState();
-
-console.log(getVisibleExpenses(state.expenses, state.filters))
-
-setTimeout(() => {
-  store.dispatch(setTextFilter('wat'));
-}, 3000)
+const state = store.getState()
 
 const jsx = (
   <Provider store={store}>
