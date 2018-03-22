@@ -1,3 +1,5 @@
+
+
 html {
   font-size: 62.5%;
 }
@@ -17,4 +19,8 @@ button:disabled {
 
 .is-active {
   font-weight: bold;
+}
+
+.SingleDatePicker, .SingleDatePicker *  {
+  box-sizing: border-box;
 }
