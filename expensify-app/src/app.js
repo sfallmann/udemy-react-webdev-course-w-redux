@@ -22,8 +22,7 @@ const state = store.getState();
 console.log(getVisibleExpenses(state.expenses, state.filters))
 
 setTimeout(() => {
-  store.dispatch(addExpense({description: 'Electric Bill', amount: 12000}))
-  store.dispatch(removeExpense(state.expenses[0]))
+  store.dispatch(setTextFilter('wat'));
 }, 3000)
 
 const jsx = (
